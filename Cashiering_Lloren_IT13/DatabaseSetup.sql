@@ -1,5 +1,4 @@
--- Database Setup Script for Cashiering System
--- Run this script in SQL Server Management Studio to create the required tables
+
 
 -- Create Products Table
 CREATE TABLE Products (

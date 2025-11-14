@@ -2,15 +2,8 @@
 {
     partial class CashieringForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+      
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,7 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
@@ -142,7 +132,7 @@
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lblTotal.ForeColor = Color.DarkGreen;
-            lblTotal.Location = new Point(452, 46);
+            lblTotal.Location = new Point(397, 46);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(163, 32);
             lblTotal.TabIndex = 7;
@@ -153,7 +143,7 @@
             btnFinalizeSale.BackColor = Color.Blue;
             btnFinalizeSale.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnFinalizeSale.ForeColor = Color.White;
-            btnFinalizeSale.Location = new Point(452, 111);
+            btnFinalizeSale.Location = new Point(400, 109);
             btnFinalizeSale.Name = "btnFinalizeSale";
             btnFinalizeSale.Size = new Size(160, 45);
             btnFinalizeSale.TabIndex = 8;
@@ -199,7 +189,6 @@
             PerformLayout();
         }
 
-        #endregion
 
         private Label lblSelectProduct;
         private ComboBox cmbProducts;

@@ -24,14 +24,12 @@ namespace Cashiering_Lloren_IT13
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    // Only show non-archived products in the management view
                     string query = "SELECT ProductID, ProductName, Price, Quantity FROM Products WHERE IsArchived = 0 ORDER BY ProductName";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
                     dataGridView1.DataSource = dataTable;
 
-                    // Format and style DataGridView columns
                     dataGridView1.Columns["ProductID"].Width = 80;
                     dataGridView1.Columns["ProductID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     
@@ -67,7 +65,6 @@ namespace Cashiering_Lloren_IT13
                     DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                     selectedProductId = Convert.ToInt32(row.Cells["ProductID"].Value);
                     txtProductName.Text = row.Cells["ProductName"].Value.ToString();
-                    // Format price with ₱ symbol
                     decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
                     txtPrice.Text = price.ToString("F2");
                     txtQuantity.Text = row.Cells["Quantity"].Value.ToString();
@@ -99,7 +96,7 @@ namespace Cashiering_Lloren_IT13
                     string query = "INSERT INTO Products (ProductName, Price, Quantity) VALUES (@productName, @price, @quantity)";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@productName", txtProductName.Text);
-                    // Parse price value (remove ₱ symbol if present)
+                
                     string priceText = txtPrice.Text.Replace("₱", "").Trim();
                     command.Parameters.AddWithValue("@price", decimal.Parse(priceText));
                     command.Parameters.AddWithValue("@quantity", int.Parse(txtQuantity.Text));
@@ -142,7 +139,6 @@ namespace Cashiering_Lloren_IT13
                     string query = "UPDATE Products SET ProductName = @productName, Price = @price, Quantity = @quantity WHERE ProductID = @productId";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@productName", txtProductName.Text);
-                    // Parse price value (remove ₱ symbol if present)
                     string priceText = txtPrice.Text.Replace("₱", "").Trim();
                     command.Parameters.AddWithValue("@price", decimal.Parse(priceText));
                     command.Parameters.AddWithValue("@quantity", int.Parse(txtQuantity.Text));
@@ -160,7 +156,7 @@ namespace Cashiering_Lloren_IT13
             }
         }
 
-        // DELETE FUNCTION - CHANGED TO ARCHIVE
+        // ARCHIVE
         // Archive (soft delete) a product instead of permanently deleting it
         private void btnDelete_Click(object sender, EventArgs e)
         {
